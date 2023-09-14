@@ -11,7 +11,7 @@ export const ProductListContainer = memo(() => {
     if (error) return <div>{error}</div>;
     return (
         <>
-            <ProductsList products={product} />;
+            <ProductsList products={product} />
             <ProductCreationContainer />
         </>
     );

@@ -12,7 +12,7 @@ export const ProductCard: FC<ProductModel> = memo(({ title, description, image, 
                 ) : (
                     <img
                         className='product-img'
-                        src='https://via.placeholder.com/200x200/282c34/E0F6FD?text=Not+Image'
+                        src='https://via.placeholder.com/200x200/282c34/E0F6FD?text=No+Image'
                         alt=''
                     ></img>
                 )}
@@ -21,11 +21,11 @@ export const ProductCard: FC<ProductModel> = memo(({ title, description, image, 
                 <div className='product-info__title'>
                     <h2>{title}</h2>
                     <p>
-                        Price: <span>{price ? `${price}$` : <>0$</>}</span>
+                        Price: <span>{price ? `${price}$` : `0$`}</span>
                     </p>
                 </div>
                 <p className='product-info__category'>
-                    Category: {props.category ? props.category : <>Not information</>}
+                    Category: {props.category ? props.category : `Not information`}
                 </p>
                 <Description text={description} />
             </div>

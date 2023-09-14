@@ -20,12 +20,3 @@ export async function getProducts(): Promise<ProductModel[] | undefined> {
         store.dispatch(setLoadingAction(false));
     }
 }
-
-export async function createNewProductApi(product: ProductModel) {
-    const postAxios = await axios.post('https://fakestoreapi.com/products', {
-        method: 'POST',
-        body: JSON.stringify(product),
-    });
-
-    console.log(postAxios.data);
-}

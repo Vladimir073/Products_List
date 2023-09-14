@@ -11,6 +11,7 @@ export const SHeader = styled.header`
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     color: white;
 
     @media (max-width: 1050px) {
@@ -21,10 +22,6 @@ export const SHeader = styled.header`
 `;
 
 export const SLoader = memo(styled.div`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, 50%);
     border: 8px solid #f3f3f3;
     border-top: 8px solid #bd93f9;
     border-radius: 50%;

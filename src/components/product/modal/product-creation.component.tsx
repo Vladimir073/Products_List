@@ -1,10 +1,10 @@
 import { FC, memo, useState } from 'react';
 import { Modal } from '../../Modal';
-import { ProductCreationForm } from '../form/product-creation.form';
 import { CreateButton } from '../../CreateButton';
 import { ProductModel } from '../../../models/ProductModel';
 import { useDispatch } from 'react-redux';
 import { setAddProduct } from '../../../store/product/product.slice';
+import { ProductCreationForm } from '../form/product-creation.form';
 
 export const ProductCreationContainer: FC = memo(() => {
     const [modalVisible, setModalVisible] = useState<boolean>(false);

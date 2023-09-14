@@ -1,9 +1,9 @@
-import { FC, memo, useEffect, useState } from 'react';
+import { FC, memo, useCallback, useEffect, useState, MouseEvent } from 'react';
 import { Input } from '../../UI/Input';
 import { Button } from '../../UI/Button';
 import { ProductModel } from '../../../models/ProductModel';
 import { SForm } from '../../../assets/styles/app.styles';
-import { createNewProductApi } from '../../../services/api/product-api.service';
+import { createNewProductApi } from '../../../services/api/createProduct-api.service';
 
 interface IForm {
     createNewProduct: (product: ProductModel) => void;
@@ -11,20 +11,27 @@ interface IForm {
 }
 
 export const ProductCreationForm: FC<IForm> = memo(({ createNewProduct, isVisible }) => {
+    const [disabled, setDisable] = useState<boolean>(false);
     const [valFromInput, setValFromInput] = useState<ProductModel>({ title: '', description: '' });
     const [error, setError] = useState<boolean>(false);
 
-    function submitProduct(e: any) {
-        e.preventDefault();
-        if (valFromInput.title === '') {
+    const submitProduct = useCallback(
+        async (e: MouseEvent<HTMLButtonElement>) => {
+            e.preventDefault();
+            setDisable(true);
+            if (valFromInput.title === '') {
+                setDisable(false);
+                setError(true);
+                return;
+            }
+            const response = await createNewProductApi(valFromInput);
             setError(true);
-            return;
-        }
-        createNewProductApi(valFromInput);
-        setError(false);
-        createNewProduct({ id: Number(Date.now()), title: valFromInput.title, description: valFromInput.description });
-        setValFromInput({ title: '', description: '' });
-    }
+            setDisable(false);
+            createNewProduct(response);
+            setValFromInput({ title: '', description: '' });
+        },
+        [createNewProduct, valFromInput]
+    );
 
     useEffect(() => {
         if (!isVisible) {
@@ -40,14 +47,14 @@ export const ProductCreationForm: FC<IForm> = memo(({ createNewProduct, isVisibl
                 innerClassName={error ? 'input error' : 'input'}
                 placeholder='title'
             />
-            <div>{error ? <div className='input-error'>Requiret. Title is not to be empty</div> : <div></div>}</div>
+            {error && <div className='input-error'>Required. Title is not to be empty</div>}
             <Input
                 valueInput={valFromInput.description}
                 handleChange={(e: any) => setValFromInput({ ...valFromInput, description: e.target.value })}
                 innerClassName='input'
-                placeholder='decription'
+                placeholder='description'
             />
-            <Button onClick={submitProduct} innerClassName='btn__create-product'>
+            <Button onClick={submitProduct} innerClassName='btn__create-product' disabled={disabled}>
                 Create
             </Button>
         </SForm>
