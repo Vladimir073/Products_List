@@ -222,7 +222,7 @@ export const SButton = memo(styled.button`
         justify-content: center;
     }
 
-    &.btn__show-desctiption,
+    &.btn__show-description,
     &.btn__create-product {
         width: 140px;
         padding: 10px 15px;

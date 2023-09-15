@@ -2,8 +2,10 @@ import { memo, FC } from 'react';
 import { ProductModel } from '../../../models/ProductModel';
 import { SItem } from '../../../assets/styles/app.styles';
 import { Description } from '../../Description';
+import { NavLink } from 'react-router-dom';
+import { ProductDetails } from '../cardDetails/product-cardDetails.component';
 
-export const ProductCard: FC<ProductModel> = memo(({ title, description, image, price, ...props }) => {
+export const ProductCard: FC<ProductModel> = memo(({ title, description, image, price, id, ...props }) => {
     return (
         <SItem>
             <div className='wrapper-img'>
@@ -19,7 +21,12 @@ export const ProductCard: FC<ProductModel> = memo(({ title, description, image, 
             </div>
             <div className='product-info'>
                 <div className='product-info__title'>
-                    <h2>{title}</h2>
+                    <NavLink
+                        to={`/Products_List/${id}`}
+                        style={{ color: 'black', fontSize: '24px', fontWeight: '600' }}
+                    >
+                        {title}
+                    </NavLink>
                     <p>
                         Price: <span>{price ? `${price}$` : `0$`}</span>
                     </p>

@@ -12,7 +12,7 @@ interface IForm {
 
 export const ProductCreationForm: FC<IForm> = memo(({ createNewProduct, isVisible }) => {
     const [disabled, setDisable] = useState<boolean>(false);
-    const [valFromInput, setValFromInput] = useState<ProductModel>({ title: '', description: '' });
+    const [valFromInput, setValFromInput] = useState<ProductModel>({ title: '', description: '', id: '' });
     const [error, setError] = useState<boolean>(false);
 
     const submitProduct = useCallback(
@@ -28,7 +28,7 @@ export const ProductCreationForm: FC<IForm> = memo(({ createNewProduct, isVisibl
             setError(true);
             setDisable(false);
             createNewProduct(response);
-            setValFromInput({ title: '', description: '' });
+            setValFromInput({ title: '', description: '', id: '' });
         },
         [createNewProduct, valFromInput]
     );

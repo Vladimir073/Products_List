@@ -1,4 +1,5 @@
-import { FC, memo, useState, useEffect, useMemo } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { FC, memo, useState, useMemo } from 'react';
 import { MAX_LENGTH } from '../constants/maxLength.constants';
 import { Button } from './UI/Button';
 
@@ -27,7 +28,7 @@ export const Description: FC<IDescription> = memo(({ text, maxLength = MAX_LENGT
         <div>
             <p>{handlerShowText}</p>
             {text.length > maxLength && (
-                <Button onClick={handleShowDescription} innerClassName='btn__show-desctiption'>
+                <Button onClick={handleShowDescription} innerClassName='btn__show-description'>
                     {isActive ? 'Show Details' : 'Hide Details'}
                 </Button>
             )}
