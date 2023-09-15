@@ -5,7 +5,7 @@ import { SModal, SModalWrapper } from '../assets/styles/app.styles';
 interface IModal {
     title: string;
     visible: boolean;
-    onClose: (e: any) => void;
+    onClose: () => void;
     children?: ReactNode;
 }
 
