@@ -1,20 +1,19 @@
 import { useParams } from 'react-router-dom';
-import { useProducts } from '../../../hooks/products.hook';
 import { useEffect, useState } from 'react';
 import { ProductModel } from '../../../models/ProductModel';
-import { Loader } from '../../Loader';
+import { useSelector } from 'react-redux';
+import { selectProducts } from '../../../store/product/product.selectors';
 
 export const ProductDetails = () => {
-    const { product, loading, error } = useProducts();
     const [detailsProduct, setDetailsProduct] = useState<ProductModel>();
 
+    const products = useSelector(selectProducts);
     const { id } = useParams();
 
     useEffect(() => {
-        const currentProduct = product.filter(item => item.id == id);
+        const currentProduct = products.filter(item => String(item.id) === id);
         setDetailsProduct(currentProduct[0]);
-    }, [id, product]);
+    }, [id, products]);
 
-    if (loading) return <Loader />;
     return <>{detailsProduct && <h1>{detailsProduct.title}</h1>}</>;
 };
