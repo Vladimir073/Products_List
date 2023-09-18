@@ -11,24 +11,36 @@ export const ProductDetails = () => {
     const products = useSelector(selectProducts);
     const { id } = useParams();
 
-    console.log(detailsProduct);
-
     useEffect(() => {
         const currentProduct = products.filter(item => String(item.id) === id);
         setDetailsProduct(currentProduct[0]);
-    }, []);
+    }, [id, products]);
 
     return (
         <SProductDetails>
             <div className='wrapper'>
-                <img src={detailsProduct.image} className='product-detail__img' alt='photo_product' />
+                {detailsProduct?.image ? (
+                    <img className='product-detail__img' src={detailsProduct.image} alt='image_product' />
+                ) : (
+                    <img
+                        className='product-detail__img'
+                        src='https://via.placeholder.com/200x200/282c34/E0F6FD?text=No+Image'
+                        alt=''
+                    />
+                )}
                 <div className='main-information'>
-                    <p>Category: {detailsProduct.category ? detailsProduct.category : `Not information`}</p>
-                    <h1>{detailsProduct.title}</h1>
-                    <p>Price: {detailsProduct.price ? `${detailsProduct.price}$` : `0$`}</p>
-                    <p>Rating: {detailsProduct.rating?.rate ? detailsProduct.rating.rate : `Not information`} / 5 </p>
-                    <p>Count: {detailsProduct.rating?.count ? detailsProduct.rating.count : `Not information`}</p>
-                    <h3>{detailsProduct.description}</h3>
+                    <p className='category'>
+                        Category: {detailsProduct?.category ? detailsProduct.category : `Not information`}
+                    </p>
+                    <h1>{detailsProduct?.title}</h1>
+                    <p className='price'>Price: {detailsProduct?.price ? `${detailsProduct.price}$` : `0$`}</p>
+                    <p className='rating'>
+                        Rating: {detailsProduct?.rating?.rate ? detailsProduct.rating.rate : `Not information`} / 5{' '}
+                    </p>
+                    <p className='count'>
+                        Count: {detailsProduct?.rating?.count ? detailsProduct.rating.count : `Not information`}
+                    </p>
+                    <h3>Description: {detailsProduct?.description}</h3>
                 </div>
             </div>
         </SProductDetails>

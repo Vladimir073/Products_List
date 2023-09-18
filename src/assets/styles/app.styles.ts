@@ -279,6 +279,80 @@ export const SProductDetails = memo(styled.div`
             flex-direction: column;
             align-items: flex-start;
             text-align: start;
+
+            & .category {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            & h1 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            & .price {
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 15px;
+            }
+
+            & .rating {
+                margin-bottom: 5px;
+            }
+
+            & .count {
+                margin-bottom: 20px;
+            }
+
+            & h3 {
+                font-size: 20px;
+            }
+        }
+    }
+
+    @media (max-width: 600px) {
+        & .wrapper {
+            flex-direction: column;
+            & .product-detail__img {
+                margin: 0 auto;
+            }
+
+            & .main-information {
+                padding: 10px;
+                display: flex;
+                flex: 1 1;
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: start;
+
+                & .category {
+                    font-size: 20px;
+                    margin-bottom: 20px;
+                }
+
+                & h1 {
+                    font-size: 28px;
+                    margin-bottom: 20px;
+                }
+
+                & .price {
+                    font-size: 20px;
+                    font-weight: 500;
+                    margin-bottom: 15px;
+                }
+
+                & .rating {
+                    margin-bottom: 5px;
+                }
+
+                & .count {
+                    margin-bottom: 20px;
+                }
+
+                & h3 {
+                    font-size: 20px;
+                }
+            }
         }
     }
 `);
