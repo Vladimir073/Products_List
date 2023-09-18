@@ -257,3 +257,28 @@ export const SButton = memo(styled.button`
         }
     }
 `);
+
+export const SProductDetails = memo(styled.div`
+    background-color: white;
+    border-radius: 5px;
+    color: #282c34;
+    & .wrapper {
+        max-width: 1000px;
+        display: flex;
+        & .product-detail__img {
+            padding: 10px;
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+        }
+
+        & .main-information {
+            padding: 10px;
+            display: flex;
+            flex: 1 1;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: start;
+        }
+    }
+`);

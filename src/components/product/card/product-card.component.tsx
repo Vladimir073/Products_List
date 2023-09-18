@@ -3,7 +3,6 @@ import { ProductModel } from '../../../models/ProductModel';
 import { SItem } from '../../../assets/styles/app.styles';
 import { Description } from '../../Description';
 import { NavLink } from 'react-router-dom';
-import { ProductDetails } from '../cardDetails/product-cardDetails.component';
 
 export const ProductCard: FC<ProductModel> = memo(({ title, description, image, price, id, ...props }) => {
     return (
