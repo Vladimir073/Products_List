@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/Products_List/static/js/main.3c7b9ca7.js",
+    "index.html": "/Products_List/index.html",
+    "static/media/cross.svg": "/Products_List/static/media/cross.c16b6b3ec578d35abf3fa881eaea8f94.svg",
+    "main.3c7b9ca7.js.map": "/Products_List/static/js/main.3c7b9ca7.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.3c7b9ca7.js"
+  ]
+}
