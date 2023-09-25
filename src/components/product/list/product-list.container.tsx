@@ -1,17 +1,17 @@
 import { memo } from 'react';
 import { ProductsList } from './products-list.component';
-import { useProducts } from '../../../hooks/products.hook';
 import { Loader } from '../../Loader';
 import { ProductCreationContainer } from '../modal/product-creation.component';
+import { useGetProductsQuery } from '../../../store/product/product.api';
 
 export const ProductListContainer = memo(() => {
-    const { product, error, loading } = useProducts();
+    const { isLoading, isError, data } = useGetProductsQuery('');
 
-    if (loading) return <Loader />;
-    if (error) return <div>{error}</div>;
+    if (isLoading) return <Loader />;
+    if (isError) return <h1>Something went wrong...</h1>;
     return (
         <>
-            <ProductsList products={product} />
+            <ProductsList products={data} />
             <ProductCreationContainer />
         </>
     );

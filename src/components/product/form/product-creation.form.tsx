@@ -3,7 +3,6 @@ import { Input } from '../../UI/Input';
 import { Button } from '../../UI/Button';
 import { ProductModel } from '../../../models/ProductModel';
 import { SForm } from '../../../assets/styles/app.styles';
-import { createNewProductApi } from '../../../services/api/createProduct-api.service';
 
 interface IForm {
     createNewProduct: (product: ProductModel) => void;
@@ -24,10 +23,10 @@ export const ProductCreationForm: FC<IForm> = memo(({ createNewProduct, isVisibl
                 setError(true);
                 return;
             }
-            const response = await createNewProductApi(valFromInput);
+            // const response = await createNewProductApi(valFromInput);
             setError(true);
             setDisable(false);
-            createNewProduct(response);
+            // createNewProduct(response);
             setValFromInput({ title: '', description: '', id: '' });
         },
         [createNewProduct, valFromInput]
