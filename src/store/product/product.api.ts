@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { PRODUCTS_URL } from '../../constants/api.constants';
+import { ProductModel } from '../../models/ProductModel';
 
 export const productApi = createApi({
     reducerPath: 'productsApi',
@@ -11,7 +12,19 @@ export const productApi = createApi({
                 params: {},
             }),
         }),
+        getDetailsProduct: build.query<ProductModel, string>({
+            query: (id: string) => ({
+                url: id,
+            }),
+        }),
+        createProduct: build.mutation({
+            query: patch => ({
+                url: '',
+                method: 'Post',
+                body: { ...patch },
+            }),
+        }),
     }),
 });
 
-export const { useGetProductsQuery } = productApi;
+export const { useGetProductsQuery, useCreateProductMutation, useGetDetailsProductQuery } = productApi;
